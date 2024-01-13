@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getReviews } from 'Api/Fetch';
+import { getReviews } from './../../Api/Fetch';
+import { ReviewsBox} from './Reviews.styled';
 
 const Reviews = () => {
   const [reviewsList, setReviewsList] = useState([]);
@@ -10,7 +11,7 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ReviewsBox>
       {reviewsList.length > 0
         ? reviewsList.map(({ author, content, id }) => (
             <li key={id}>
@@ -19,7 +20,7 @@ const Reviews = () => {
             </li>
           ))
         : "Sorry, we don't have any review for this movie"}
-    </ul>
+    </ReviewsBox>
   );
 };
 export default Reviews;

@@ -9,10 +9,15 @@ export const getTrending = async () => {
 };
 
 export const searchMovies = async query => {
-  const response = await axios.get(
-    `search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
-  );
-  return response.data;
+  try{
+    const response = await axios.get(
+      `search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+    );
+    return response.data;
+  }
+  catch (error) {
+    console.error(error);
+  }
 };
 
 export const getMovieDetails = async id => {
